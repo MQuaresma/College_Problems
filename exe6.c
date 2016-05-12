@@ -7,7 +7,7 @@ typedef struct lligada{
 }*LInt;
 
 int removeOneOrd(LInt l, int x){
-	LInt laux;
+	LInt laux = l;
 	
 	while(l->valor != x && l != NULL){
 		laux = l;
@@ -18,7 +18,6 @@ int removeOneOrd(LInt l, int x){
 	laux->prox = l->prox;	
 	free(l);
 	return 0;
-
 }
 
 
@@ -31,16 +30,19 @@ int main(){
 	l->prox->prox = (LInt) malloc(sizeof(struct lligada));
 	l->prox->prox->valor=1;
 	l->prox->prox->prox= NULL; 
-	l2 = l;
+	/*l2 = l;
 	while(l!=NULL){
 		printf("%d\n", l->valor);	
 		l=l->prox;
-	}
+	}*/
 	printf("\n");
-	if(!removeOneOrd(l2, 1)){
-		while(l2!=NULL){
+	int x;
+	printf("Introduza o nro a remover: ");	
+	scanf("%d", &x);
+	if(!removeOneOrd(l, x)){
+		while(l!=NULL){
 			printf("%d\n", l2->valor);	
-			l2=l2->prox;
+			l=l->prox;
 		}
 	}
 	return 0;
